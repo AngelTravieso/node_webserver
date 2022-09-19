@@ -1,10 +1,16 @@
 const express = require('express');
+const hbs = require('hbs');
+
 const app = express();
 const port = 8080;
+
+//* HANDLEBARS
 
 // Configurar template engine
 app.set('view engine', 'hbs');
 
+// Definir carpeta de partials (hbs)
+hbs.registerPartials( __dirname + '/views/partials/' );
 
 // Servir contenido estático (carpeta public)
 app.use( express.static('public') );
@@ -20,11 +26,17 @@ app.get('/', (req, res) => {
 
 
 app.get('/generic', (req, res) => {
-    res.sendFile( __dirname + '/public/generic.html' );
+    res.render('generic', {
+        nombre: 'Angel Travieso',
+        titulo: 'Curso de Node',
+    });
 });
 
 app.get('/elements', (req, res) => { 
-    res.sendFile( __dirname + '/public/elements.html' );
+    res.render('elements', {
+        nombre: 'Angel Travieso',
+        titulo: 'Curso de Node',
+    });
 });
 
 
