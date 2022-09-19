@@ -2,14 +2,18 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
+// Configurar template engine
+app.set('view engine', 'hbs');
+
 
 // Servir contenido estático (carpeta public)
 app.use( express.static('public') );
 
 
-// app.get('/', (req, res) => {
-// //   res.send('Home Page');
-// });
+app.get('/', (req, res) => {
+    // Renderizar vista con template engine
+    res.render('home');
+});
 
 
 app.get('/generic', (req, res) => {
