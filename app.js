@@ -12,7 +12,10 @@ app.use( express.static('public') );
 
 app.get('/', (req, res) => {
     // Renderizar vista con template engine
-    res.render('home');
+    res.render('home', {
+        nombre: 'Angel Travieso',
+        titulo: 'Curso de Node',
+    });
 });
 
 
